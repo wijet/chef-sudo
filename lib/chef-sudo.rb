@@ -41,6 +41,22 @@ class Chef
           :kind_of => [ TrueClass, FalseClass ]
         )
       end
+      
+      def cwd(arg=nil)
+        set_or_return(
+          :cwd,
+          arg,
+          :kind_of => [ String ]
+        )
+      end
+      
+      def environment(arg=nil)
+        set_or_return(
+          :environment,
+          arg,
+          :kind_of => [ Hash ]
+        )
+      end
     end
   end
 end
@@ -57,11 +73,14 @@ class Chef
         command << "-g #{@new_resource.group}" if @new_resource.group
         command << "-i" if @new_resource.simulate_initial_login
         command << @new_resource.command
-
-        Chef::Mixin::Command.run_command(:command => command.join(' '))
+        
+        options = {:command => command.join(' ')}
+        options[:cwd] = @new_resource.cwd if @new_resource.cwd
+        options[:environment] = @new_resource.environment if @new_resource.environment
+        
+        Chef::Mixin::Command.run_command(options)
         Chef::Log.info "Ran sudo [#{@new_resource.name}]"
       end
     end
   end
 end
-
