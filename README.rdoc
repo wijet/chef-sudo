@@ -1,6 +1,6 @@
-= chef-sudo
+= chef sudo resource
 
-Description goes here.
+A chef resource which allows executing commands with sudo.
 
 == Note on Patches/Pull Requests
  
@@ -14,4 +14,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 Mariusz Pietrzyk. See LICENSE for details.
+Copyright (c) 2010 Mariusz Pietrzyk wijet at wijet dot pl. See LICENSE for details.
