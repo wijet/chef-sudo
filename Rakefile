@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "chef-sudo"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{chef sudo resource}
+    gem.description = %Q{Provides chef sudo resource for executing commands with sudo}
     gem.email = "wijet@wijet.pl"
     gem.homepage = "http://github.com/wijet/chef-sudo"
     gem.authors = ["Mariusz Pietrzyk"]
