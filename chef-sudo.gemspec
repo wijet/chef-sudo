@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "chef-sudo.gemspec",
      "lib/chef-sudo.rb",
      "test/helper.rb",
      "test/test_chef-sudo.rb"
