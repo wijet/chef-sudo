@@ -34,7 +34,7 @@ class Chef
         )
       end
       
-      def simulate_initial_login(arg=false)
+      def simulate_initial_login(arg=nil)
         set_or_return(
           :simulate_initial_login,
           arg,
@@ -72,15 +72,20 @@ class Chef
         command << "-u #{@new_resource.user}" if @new_resource.user
         command << "-g #{@new_resource.group}" if @new_resource.group
         command << "-i" if @new_resource.simulate_initial_login
-        command << @new_resource.command
-        
+
+        if @new_resource.cwd
+          command << " -- \"cd #{@new_resource.cwd} && #{@new_resource.command}\""
+        else
+          command << " -- \"#{@new_resource.command}\""
+        end
+
         options = {:command => command.join(' ')}
-        options[:cwd] = @new_resource.cwd if @new_resource.cwd
         options[:environment] = @new_resource.environment if @new_resource.environment
-        
+
         Chef::Mixin::Command.run_command(options)
         Chef::Log.info "Ran sudo [#{@new_resource.name}]"
       end
     end
   end
 end
+
