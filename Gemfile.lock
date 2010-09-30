@@ -1,0 +1,56 @@
+PATH
+  remote: .
+  specs:
+    chef-sudo (0.2.0)
+      chef
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    bunny (0.6.0)
+    chef (0.9.8)
+      bunny (>= 0.6.0)
+      erubis
+      extlib
+      highline
+      json (<= 1.4.2)
+      mixlib-authentication (>= 1.1.0)
+      mixlib-cli (>= 1.1.0)
+      mixlib-config (>= 1.1.0)
+      mixlib-log (>= 1.1.0)
+      moneta
+      ohai (>= 0.5.6)
+      rest-client (>= 1.0.4, <= 1.5.1)
+      uuidtools
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    extlib (0.9.15)
+    highline (1.6.1)
+    json (1.4.2)
+    mime-types (1.16)
+    mixlib-authentication (1.1.4)
+      mixlib-log
+    mixlib-cli (1.2.0)
+    mixlib-config (1.1.2)
+    mixlib-log (1.1.0)
+    moneta (0.6.0)
+    ohai (0.5.6)
+      extlib
+      json (<= 1.4.2)
+      mixlib-cli
+      mixlib-config
+      mixlib-log
+      systemu
+    rest-client (1.5.1)
+      mime-types (>= 1.16)
+    systemu (1.2.0)
+    uuidtools (2.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (>= 1.0.0)
+  chef
+  chef-sudo!

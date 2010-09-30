@@ -2,8 +2,14 @@
 
 A chef resource which allows executing commands with sudo.
 
+== Compatibility
+
+0.1.x gem version is compatible with chef 0.8.x
+
+0.2.x gem version is compatible with chef 0.9.x
+
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
