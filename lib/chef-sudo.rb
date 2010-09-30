@@ -3,21 +3,21 @@ require 'chef/resource'
 class Chef
   class Resource
     class Sudo < Chef::Resource
-      def initialize(name, collection=nil, node=nil)
-        super(name, collection, node)
+      def initialize(name, run_context=nil)
+        super(name, run_context)
         @resource_name = :sudo
-        @action = :execute
+        @action = "execute"
         @allowed_actions.push(:execute)
       end
-      
+
       def command(arg=nil)
         set_or_return(
-          :command, 
-          arg, 
+          :command,
+          arg,
           :kind_of => [ String ]
         )
       end
-      
+
       def user(arg=nil)
         set_or_return(
           :user,
@@ -25,7 +25,7 @@ class Chef
           :kind_of => [ String ]
         )
       end
-      
+
       def group(arg=nil)
         set_or_return(
           :group,
@@ -33,7 +33,7 @@ class Chef
           :kind_of => [ String ]
         )
       end
-      
+
       def simulate_initial_login(arg=nil)
         set_or_return(
           :simulate_initial_login,
@@ -41,7 +41,7 @@ class Chef
           :kind_of => [ TrueClass, FalseClass ]
         )
       end
-      
+
       def cwd(arg=nil)
         set_or_return(
           :cwd,
@@ -49,7 +49,7 @@ class Chef
           :kind_of => [ String ]
         )
       end
-      
+
       def environment(arg=nil)
         set_or_return(
           :environment,
@@ -66,7 +66,7 @@ class Chef
     class Sudo < Chef::Provider
       def load_current_resource
       end
-      
+
       def action_execute
         command = ["sudo"]
         command << "-u #{@new_resource.user}" if @new_resource.user
@@ -74,9 +74,9 @@ class Chef
         command << "-i" if @new_resource.simulate_initial_login
 
         if @new_resource.cwd
-          command << " -- \"cd #{@new_resource.cwd} && #{@new_resource.command}\""
+          command << %Q{ -- "cd #{@new_resource.cwd} && #{@new_resource.command}"}
         else
-          command << " -- \"#{@new_resource.command}\""
+          command << %Q{ -- "#{@new_resource.command}"}
         end
 
         options = {:command => command.join(' ')}
@@ -88,4 +88,3 @@ class Chef
     end
   end
 end
-
