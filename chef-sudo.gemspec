@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name        = "chef-sudo"
-  s.version     = "0.2.0"
+  s.version     = "0.2.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Mariusz Pietrzyk"]
   s.email       = ["wijet@wijet.pl"]
@@ -14,8 +14,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "chef-sudo"
 
-  s.add_dependency "chef"
-  s.add_development_dependency "bundler", ">= 1.0.0"
+  s.add_dependency "chef", "~> 0.9.0"
 
   s.files        = `git ls-files`.split("\n")
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
