@@ -74,9 +74,9 @@ class Chef
         command << "-i" if @new_resource.simulate_initial_login
 
         if @new_resource.cwd
-          command << %Q{ -- "cd #{@new_resource.cwd} && #{@new_resource.command}"}
+          command << %Q{ -- cd #{@new_resource.cwd} && #{@new_resource.command}}
         else
-          command << %Q{ -- "#{@new_resource.command}"}
+          command << %Q{ -- #{@new_resource.command}}
         end
 
         options = {:command => command.join(' ')}
