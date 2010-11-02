@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name        = "chef-sudo"
-  s.version     = "0.2.1"
+  s.version     = "0.2.2"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Mariusz Pietrzyk"]
   s.email       = ["wijet@wijet.pl"]
