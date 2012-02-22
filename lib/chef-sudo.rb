@@ -72,11 +72,12 @@ class Chef
         command << "-u #{@new_resource.user}" if @new_resource.user
         command << "-g #{@new_resource.group}" if @new_resource.group
         command << "-i" if @new_resource.simulate_initial_login
-
+        
+        # changed " to ' to support `command`
         if @new_resource.cwd
-          command << %Q{ bash -c "cd #{@new_resource.cwd} && #{@new_resource.command}"}
+          command << %Q{ bash -c 'cd #{@new_resource.cwd} && #{@new_resource.command}'}
         else
-          command << %Q{ bash -c "#{@new_resource.command}"}
+          command << %Q{ bash -c '#{@new_resource.command}'}
         end
 
         options = {:command => command.join(' ')}
