@@ -64,6 +64,8 @@ end
 class Chef
   class Provider
     class Sudo < Chef::Provider
+      provides :sudo
+      
       def load_current_resource
       end
 
